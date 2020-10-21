@@ -92,8 +92,12 @@ class CategoryController extends Controller
         $this->validate($request,[
             'name'=>"required|unique:categories,name,$category->name",
         ]);
-            dd($request->all());
 
+            $category->name= $request->name;
+            $category->slug = Str::slug($request->name, '-');
+            $category->describtion = $request->describtion;
+            $category->save();
+            return redirect()->route('category.index')->with('success','Category Updated');
     }
 
     /**
@@ -104,7 +108,8 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
-        Category::destroy();
+        $category->delete();
+        return redirect()->route('category.index')->with('success','Category deleted');
     }
+
 }

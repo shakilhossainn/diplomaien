@@ -62,11 +62,15 @@
                         <td>{{$category->name}}</td>
                         <td>{{$category->id}}</td>
                         <td class="d-flex">
-                        <a href="{{route('category.edit',[$category->id])}}" class="btn-sm btn-success"><i class="fas fa-edit"></i></a>
-                        <form action="{{route('category.destroy',[$category->id])}}" method="POST" class="btn-sm btn-danger ml-2">
+                        <a href="{{route('category.edit',[$category->id])}}"  class="btn-sm btn-success"><i class="fas fa-edit"></i></a>
+
+                        <form action="{{route('category.destroy',[$category->id])}}" method="POST" >
+
+                            @method('DELETE')
                             @csrf
-                            @method('delete')
-                            <i class="fas fa-trash"></i>
+                            <button type="submit" class="btn-sm btn-danger ml-2"> <i class="fas fa-trash"></i></button>
+
+
                         </form>
                         </td>
                     </tr>
