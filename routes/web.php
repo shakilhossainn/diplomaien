@@ -1,6 +1,8 @@
 <?php
 
+use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
+use Monolog\Handler\RotatingFileHandler;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,9 +21,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Route::get('/test', function () {
-    return view('admin.dashboard.index');
+Route::group(['prefix' => 'admin','middleware' => ['auth']], function () {
+    Route::get('/test', function () {
+        return view('admin.dashboard.index');
+    })->name('admin.test');
+    Route::resource('category', 'CategoryController');
 });

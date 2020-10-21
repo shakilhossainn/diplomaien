@@ -39,13 +39,9 @@
                   <a href="#" class="card-link">Another link</a>
                 </div>
               </div>
-
        </div>
-
-
             </div>
-            <!-- /.col-md-6 -->
-
+            <!-- /.col-md-6 --
             <!-- /.col-md-6 -->
           </div>
           <!-- /.row -->
