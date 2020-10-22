@@ -28,5 +28,9 @@ Route::group(['prefix' => 'admin','middleware' => ['auth']], function () {
     Route::get('/test', function () {
         return view('admin.dashboard.index');
     })->name('admin.test');
+
     Route::resource('category', 'CategoryController');
+    Route::resource('tag', 'TagController');
+
+
 });

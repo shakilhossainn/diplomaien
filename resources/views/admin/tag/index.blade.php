@@ -8,12 +8,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0 text-dark">Category</h1>
+          <h1 class="m-0 text-dark">Tag</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Category list</li>
+            <li class="breadcrumb-item active">Tag list</li>
           </ol>
         </div><!-- /.col -->
       </div><!-- /.row -->
@@ -35,8 +35,8 @@
               <div class="card-header">
                   <div class=" d-flex justify-content-between">
 
-                      <h3 class="card-title">Category list</h3>
-                  <a href="{{route('category.create')}}" class="btn btn-primary"><i class="fas fa-plus"></i></a>
+                      <h3 class="card-title">tag list</h3>
+                  <a href="{{route('tag.create')}}" class="btn btn-primary"><i class="fas fa-plus"></i></a>
 
                   </div>
               </div>
@@ -46,8 +46,8 @@
                   <thead>
                     <tr>
                       <th style="width: 20px">#</th>
-                      <th>Category Name</th>
-                      <th>Post Count</th>
+                      <th>Tag Name</th>
+                      <th>Tag Slug</th>
                       <th>Action</th>
                     </tr>
                   </thead>
@@ -55,15 +55,15 @@
                       @php
                           $i = 1
                       @endphp
-                    @foreach ($categoryies as $category)
+                    @foreach ($tags as $tag)
                     <tr>
                     <td>{{$i++}}</td>
-                        <td>{{$category->name}}</td>
-                        <td>{{$category->id}}</td>
+                        <td>{{$tag->name}}</td>
+                        <td>{{$tag->slug}}</td>
                         <td class="d-flex">
-                        <a href="{{route('category.edit',[$category->id])}}"  class="btn-sm btn-success"><i class="fas fa-edit"></i></a>
+                        <a href="{{route('tag.edit',[$tag->id])}}"  class="btn-sm btn-success"><i class="fas fa-edit"></i></a>
 
-                        <form action="{{route('category.destroy',[$category->id])}}" method="POST" >
+                        <form action="{{route('tag.destroy',[$tag->id])}}" method="POST" >
 
                             @method('DELETE')
                             @csrf
