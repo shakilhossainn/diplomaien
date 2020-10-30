@@ -55,6 +55,7 @@
                       @php
                           $i = 1
                       @endphp
+                    @if ($tags->count())
                     @foreach ($tags as $tag)
                     <tr>
                     <td>{{$i++}}</td>
@@ -75,6 +76,13 @@
                     </tr>
 
                     @endforeach
+                    @else
+                    <tr>
+                        <td colspan="5">
+                            <h5 style="text-align: center;">NO Tag data forund</h5>
+                        </td>
+                    </tr>
+                    @endif
                   </tbody>
                 </table>
               </div>
